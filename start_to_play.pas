@@ -33,7 +33,7 @@ DEBUT
 			FINSI
 		FINSI
 		ECRIRE "Il reste "&placelibre&" place libres dans la salle"
-		SI placelibre=0 ALORS
+		SI placelibre=0 ALORS // si le nombre de place libre est =0 alors afficher qu'il n'y a plus de place
 			ECRIRE "Nombre Maximum atteint"
 		FINSI
 	JUSQU'A nb=0
@@ -42,17 +42,17 @@ DEBUT
 
 VAR
 
-	placelibre,nb:integer;
+	placelibre,nb:integer; //nb correspond au nombre entrer
 	
 BEGIN
 	clrscr;
-	placelibre:=250;
+	placelibre:=250; //initialisation du nombre de place libre
 	REPEAT
 		writeln('Veuillez entrer le nombre de personne (entrant nombre + sortent nombre -) et 0 pour quitter:');
 		readln(nb);
-		IF nb>0 THEN
+		IF nb>0 THEN //si nb>0 alors le nombre de place libre diminue donc placelibre-nb
 			begin
-				IF placelibre-nb<0 THEN
+				IF placelibre-nb<0 THEN // vérification que le nombre de place libre est suffisante
 					begin
 						writeln('Impossible  trop de personnes veulent entrer')
 					end
@@ -63,9 +63,9 @@ BEGIN
 			end
 		ELSE
 			begin
-				IF nb<0 THEN
+				IF nb<0 THEN //sinon si nb<0 alors le nombre de place libre augmente donc placelibre-nb car nb est négative
 					begin
-						IF placelibre-nb>250 THEN
+						IF placelibre-nb>250 THEN //vérification qu'il y a plus ou autant de personne qui veulent sortir
 							begin
 								writeln('Impossible trop de personne veulent sortir');
 							end
@@ -76,7 +76,7 @@ BEGIN
 					end;
 			end;
 		writeln('Il reste ',placelibre,' place libre dans la salle.');
-		IF placelibre=0 THEN
+		IF placelibre=0 THEN // si le nombre de place libre est =0 alors afficher qu'il n'y a plus de place
 			begin
 				writeln('Nombre Maximum atteint');
 			end;
